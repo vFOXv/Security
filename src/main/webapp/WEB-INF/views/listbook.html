@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List books</title>
+    <style>
+        tr,td{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<p th:text="${message}"></p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>name book</td>
+        <td>Your</td>
+        <td>Style</td>
+        <td>Amount pages</td>
+        <td>Description</td>
+    <tr th:each="book:${AllBook}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.your}"></td>
+        <td th:text="${book.style}"></td>
+        <td th:text="${book.amountPages}"></td>
+        <td th:text="${book.description}"></td>
+    </tr>
+</table>
+    <a th:href="@{/new}">Add product</a>
+</body>
+</html>

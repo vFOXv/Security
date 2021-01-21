@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Book</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/done}" th:object="${book}" method="post">
+    <p>Name:<input type="text" th:field="*{name}"/></p>
+    <p>Author:<input type="text" th:field="*{author}"/></p>
+    <p>Your:<input type="text" th:field="*{your}"/></p>
+    <p>Style:<input type="text" th:field="*{style}"/></p>
+    <p>Amount pages:<input type="text" th:field="*{amountPages}"/></p>
+    <p>Description:<input type="text" th:field="*{description}"/></p>
+
+    <p><input type="submit" value="ADD BOOK"/>
+        <input type="reset" value="Reset"></p>
+</form>
+
+</body>
+</html>
