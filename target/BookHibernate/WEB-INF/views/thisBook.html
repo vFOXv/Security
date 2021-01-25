@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>This Book</title>
+    <style>
+        tr,td{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+<form action="#" th:action="@{/update/{id}(id=${getBook.id})}" th:object="${getBook}" method="post">
+<!--<form action="#" th:action="@{/new}" th:object="${getBook}" method="post">-->
+<table>
+    <tr>
+        <td>Id Book</td>
+        <td th:text="${getBook.id}"></td>
+    </tr>
+    <tr>
+        <td>Name of book</td>
+        <td ><input type="text" th:field="*{name}"></td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td ><input type="text" th:field="*{author}"></td>
+    </tr>
+    <tr>
+        <td>Your of book</td>
+        <td><input type="text" th:field="*{your}"></td>
+    </tr>
+    <tr>
+        <td>Style of book</td>
+        <td><input type="text" th:field="*{style}"></td>
+    </tr>
+    <tr>
+        <td>Amount pages</td>
+        <td><input type="text" th:field="*{amountPages}"></td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td><input type="text" th:field="*{description}"></td>
+    </tr>
+
+</table>
+    <button>Update book</button>
+</form>
+</body>
+</html>

@@ -40,8 +40,20 @@ public class BookController {
     }
 
     @GetMapping("/remove/{id}")
-    public String removeBook(@PathVariable("id") int id, Model model) {
+    public String removeBook(@PathVariable("id") int id) {
         daoHib.remove(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/{id}")
+    public String thisBook(@PathVariable("id") int id, Model model){
+        model.addAttribute("getBook", daoHib.getBookId(id));
+        return "thisBook";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateBook(@ModelAttribute Book book){
+        daoHib.updateBook(book);
         return "redirect:/";
     }
 }

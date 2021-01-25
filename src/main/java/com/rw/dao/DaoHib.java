@@ -27,14 +27,14 @@ public class DaoHib {
         transaction.commit();  */
 
         //получение по id
-        /*Book book = session.get(Book.class, 3);
-        System.out.println(book);  */
-
-//        //получение объекта по id
-//        public Book getHamster(Long id){
-//            Book book = mySession().get(Book.class, id);
-//            return book;
-//        }
+    public Book getBookId(int id) {
+        Transaction transaction = mySession().beginTransaction();
+        Book book = mySession().get(Book.class, id);
+        System.out.println(book);
+        //mySession().close();
+        transaction.commit();
+        return book;
+    }
 
         //получение всех данных с таблицы
     public List<Book> getAllBooks() {
@@ -53,6 +53,23 @@ public class DaoHib {
         mySession().close();
         transaction.commit();
     }
+
+    //изменение данных в объекте
+    public void updateBook(Book newBook){
+        Transaction transaction = mySession().beginTransaction();
+        Book book = mySession().get(Book.class, newBook.getId());
+        book = newBook;
+//        book.setName(newBook.getName());
+//        book.setAuthor(newBook.getAuthor());
+//        book.setYour(newBook.getYour());
+//        book.setStyle(newBook.getStyle());
+//        book.setAmountPages(newBook.getAmountPages());
+//        book.setDescription(newBook.getDescription());
+
+        //mySession().update(newBook);
+        mySession().close();
+        transaction.commit();
+    }
         //изменение данных в объекте(данные обновляются автоматически)
         /*Person person = session.get(Person.class, 1);
         System.out.println(person);
@@ -61,11 +78,11 @@ public class DaoHib {
         transaction.commit();   */
 
         //удаление объекта
-    public void remove(Integer id){
+    public void remove(int id){
         Transaction transaction = mySession().beginTransaction();
         Book book = mySession().get(Book.class, id);
         mySession().delete(book);
-        //mySession().close();
+        mySession().close();
         transaction.commit();
     }
 
