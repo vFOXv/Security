@@ -19,6 +19,7 @@
         <td>Style</td>
         <td>Amount pages</td>
         <td>Description</td>
+        <td>Delete</td>
     <tr th:each="book:${AllBook}">
         <td th:text="${book.id}"></td>
         <td th:text="${book.name}"></td>
@@ -26,8 +27,9 @@
         <td th:text="${book.style}"></td>
         <td th:text="${book.amountPages}"></td>
         <td th:text="${book.description}"></td>
+        <td><a th:href="@{/remove/{id}(id=${book.id})}">Remove book</a></td>
     </tr>
 </table>
-    <a th:href="@{/new}">Add product</a>
+    <a th:href="@{/new}">Add book</a>
 </body>
 </html>

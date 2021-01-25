@@ -1,7 +1,7 @@
 package com.rw.models;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
 @Table(name="books")
@@ -9,25 +9,18 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_b")
     private int id;
 
-    @Column(name = "name_b")
     private String name;
 
-    @Column(name = "author")
     private String author;
 
-    @Column(name = "your_b")
     private String your;
 
-    @Column(name = "style_b")
     private String style;
 
-    @Column(name = "amount_b")
     private int amountPages;
 
-    @Column(name = "description_b")
     private String description;
 
     public Book() {    }
