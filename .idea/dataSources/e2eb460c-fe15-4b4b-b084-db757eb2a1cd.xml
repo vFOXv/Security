@@ -763,43 +763,69 @@ SELECT|sys.sys_config:null
 </ObjectGrants>
     </user>
     <table id="238" parent="2" name="books"/>
-    <column id="239" parent="238" name="id">
+    <table id="239" parent="2" name="owner"/>
+    <column id="240" parent="238" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="240" parent="238" name="name">
+    <column id="241" parent="238" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="241" parent="238" name="author">
+    <column id="242" parent="238" name="author">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="242" parent="238" name="your">
+    <column id="243" parent="238" name="your">
       <Position>4</Position>
       <DataType>varchar(4)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="243" parent="238" name="style">
+    <column id="244" parent="238" name="style">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="244" parent="238" name="amountPages">
+    <column id="245" parent="238" name="amountPages">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="245" parent="238" name="description">
+    <column id="246" parent="238" name="description">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="246" parent="238" name="PRIMARY">
+    <column id="247" parent="238" name="id_owner">
+      <Position>8</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <key id="248" parent="238" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="249" parent="239" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="250" parent="239" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="251" parent="239" name="address">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="252" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

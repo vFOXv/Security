@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="noname-dispatcher-servlet.xml@1717" />
+          <unit-entry name="noname-dispatcher-servlet.xml@1717" value="e2eb460c-fe15-4b4b-b084-db757eb2a1cd" />
           <unit-entry name="noname-dispatcher-servlet.xml@1721" />
         </datasource-map>
         <naming-strategy-map />

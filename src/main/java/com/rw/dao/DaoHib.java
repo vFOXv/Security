@@ -31,7 +31,7 @@ public class DaoHib {
         Transaction transaction = mySession().beginTransaction();
         Book book = mySession().get(Book.class, id);
         System.out.println(book);
-        //mySession().close();
+        mySession().close();
         transaction.commit();
         return book;
     }
@@ -101,6 +101,6 @@ public class DaoHib {
         transaction.commit();  */
 
 
-        //sessionFactory.close();
+
     }
 

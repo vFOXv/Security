@@ -23,6 +23,10 @@ public class Book {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "id_owner")
+    private Owner owner;
+
     public Book() {    }
 
     public Book(String name, String author, String your, String style, int amountPages, String description) {
@@ -90,17 +94,26 @@ public class Book {
         this.description = description;
     }
 
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", your=" + your +
+                ", your='" + your + '\'' +
                 ", style='" + style + '\'' +
                 ", amountPages=" + amountPages +
                 ", description='" + description + '\'' +
-                '}' +"\n";
+                ", owner=" + owner +
+                '}'+"\n";
     }
 }
 
