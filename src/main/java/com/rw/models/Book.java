@@ -1,6 +1,8 @@
 package com.rw.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -27,15 +29,20 @@ public class Book {
     @JoinColumn(name = "id_owner")
     private Owner owner;
 
+    @ManyToMany(mappedBy = "books")
+    Set<Buyer> buyers = new HashSet<>();
+
     public Book() {    }
 
-    public Book(String name, String author, String your, String style, int amountPages, String description) {
+    public Book(String name, String author, String your, String style, int amountPages, String description, Owner owner, Set<Buyer> buyers) {
         this.name = name;
         this.author = author;
         this.your = your;
         this.style = style;
         this.amountPages = amountPages;
         this.description = description;
+        this.owner = owner;
+        this.buyers = buyers;
     }
 
     public int getId() {
@@ -102,6 +109,14 @@ public class Book {
         this.owner = owner;
     }
 
+    public Set<Buyer> getBuyers() {
+        return buyers;
+    }
+
+    public void setBuyers(Set<Buyer> buyers) {
+        this.buyers = buyers;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -113,6 +128,7 @@ public class Book {
                 ", amountPages=" + amountPages +
                 ", description='" + description + '\'' +
                 ", owner=" + owner +
+                ", buyers=" + buyers +
                 '}'+"\n";
     }
 }

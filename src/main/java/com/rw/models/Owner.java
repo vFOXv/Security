@@ -12,6 +12,7 @@ public class Owner {
     private int id;
     private String name;
     private String address;
+
     @OneToMany(mappedBy = "owner")
     Set<Book> bookSet = new HashSet<>();
 
