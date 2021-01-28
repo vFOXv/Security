@@ -53,7 +53,7 @@
 
     <tr th:each="buyer:${getBook.buyers}">
         <td>Buyer's name</td>
-        <td><input type="text" th:field="*{buyer.name}"></td>
+        <td><th:input type="text" th:text="${buyer.name}"/></td>
     </tr>
 <!--    <tr>-->
 <!--        <td>Buyer's phone</td>-->

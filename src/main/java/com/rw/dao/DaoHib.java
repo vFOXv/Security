@@ -3,11 +3,9 @@ package com.rw.dao;
 import com.rw.models.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
 import org.springframework.stereotype.Component;
-
 import java.util.List;
+
 @Component
 public class DaoHib {
 
@@ -21,86 +19,44 @@ public class DaoHib {
         return sessionFactory.openSession();
     }
 
-        //запись в БД(вносить можно с помощью set)
-        /*Person person = new Person("Name_4",17);
-        session.save(person);
-        transaction.commit();  */
 
-        //получение по id
+
+
+
     public Book getBookId(int id) {
-        Transaction transaction = mySession().beginTransaction();
-        Book book = mySession().get(Book.class, id);
+        Session session = mySession().getSession();
+        Book book = session.get(Book.class, id);
         System.out.println(book);
-        mySession().close();
-        transaction.commit();
         return book;
     }
 
-        //получение всех данных с таблицы
+
+
+    //получение всех данных с таблицы
     public List<Book> getAllBooks() {
-        Transaction transaction = mySession().beginTransaction();
-        List<Book> allBooks = mySession().createQuery("SELECT b FROM Book  b", Book.class).getResultList();
+        Session session = mySession().getSession();
+        List<Book> allBooks = session.createQuery("SELECT b FROM Book  b", Book.class).getResultList();
         System.out.println(allBooks);
-        mySession().close();
-        transaction.commit();
         return allBooks;
     }
 
-        //запись новой книги
-    public void addNewBook(Book book){
-        Transaction transaction = mySession().beginTransaction();
-        mySession().save(book);
-        mySession().close();
-        transaction.commit();
+    //запись новой книги
+    public void addNewBook(Book book) {
+        Session session = mySession().getSession();
+        session.save(book);
     }
 
     //изменение данных в объекте
-    public void updateBook(Book newBook){
-        Transaction transaction = mySession().beginTransaction();
-        Book book = mySession().get(Book.class, newBook.getId());
-        book = newBook;
-//        book.setName(newBook.getName());
-//        book.setAuthor(newBook.getAuthor());
-//        book.setYour(newBook.getYour());
-//        book.setStyle(newBook.getStyle());
-//        book.setAmountPages(newBook.getAmountPages());
-//        book.setDescription(newBook.getDescription());
-
-        //mySession().update(newBook);
-        mySession().close();
-        transaction.commit();
-    }
-        //изменение данных в объекте(данные обновляются автоматически)
-        /*Person person = session.get(Person.class, 1);
-        System.out.println(person);
-        person.setAge(16);
-        System.out.println(person);
-        transaction.commit();   */
-
-        //удаление объекта
-    public void remove(int id){
-        Transaction transaction = mySession().beginTransaction();
-        Book book = mySession().get(Book.class, id);
-        mySession().delete(book);
-        mySession().close();
-        transaction.commit();
+    public void updateBook(Book book) {
+        Session session = mySession().getSession();
+        session.update(book);
     }
 
     //удаление объекта
-        /*Person person = session.get(Person.class, 2);
-        session.delete(person);
-        transaction.commit();
-        System.out.println(person);  */
-
-        /*City lviv = new City("Lviv",50_000);
-        City kiev = new City("Kiev", 60_000);
-        City odessa = new City("Odessa",10_000);
-        session.save(lviv);
-        session.save(kiev);
-        session.save(odessa);
-        transaction.commit();  */
-
-
-
+    public void remove(int id) {
+        Session session = mySession().getSession();
+        Book book = session.get(Book.class, id);
+        session.delete(book);
     }
+}
 
