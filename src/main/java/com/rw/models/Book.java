@@ -25,7 +25,7 @@ public class Book {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "id_owner")
     private Owner owner;
 
