@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>This Book</title>
     <style>
-        tr,td{
+        tr, td {
             border: 1px solid;
         }
     </style>
@@ -12,59 +12,86 @@
 <body>
 
 <form action="#" th:action="@{/update/{id}(id=${getBook.id})}" th:object="${getBook}" method="post">
-<!--<form action="#" th:action="@{/new}" th:object="${getBook}" method="post">-->
-<table>
-    <tr>
-        <td>Id Book</td>
-        <td th:text="${getBook.id}"></td>
-    </tr>
-    <tr>
-        <td>Name of book</td>
-        <td ><input type="text" th:field="*{name}"></td>
-    </tr>
-    <tr>
-        <td>Author</td>
-        <td ><input type="text" th:field="*{author}"></td>
-    </tr>
-    <tr>
-        <td>Your of book</td>
-        <td><input type="text" th:field="*{your}"></td>
-    </tr>
-    <tr>
-        <td>Style of book</td>
-        <td><input type="text" th:field="*{style}"></td>
-    </tr>
-    <tr>
-        <td>Amount pages</td>
-        <td><input type="text" th:field="*{amountPages}"></td>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td><input type="text" th:field="*{description}"></td>
-    </tr>
-    <tr >
-        <td>Owner's id</td>
-        <td> <input type="text" readonly th:field="*{owner.id}"></td>
-    </tr>
-    <tr>
-        <td>Owner's name</td>
-        <td><input type="text" th:field="*{owner.name}"></td>
-    </tr>
-    <tr>
-        <td>Owner's address</td>
-        <td><input type="text" th:field="*{owner.address}"></td>
-    </tr>
+    <!--<form action="#" th:action="@{/new}" th:object="${getBook}" method="post">-->
+    <table>
+        <tr>
+            <td>Id Book</td>
+            <td th:text="${getBook.id}"></td>
+        </tr>
+        <tr>
+            <td>Name of book</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td><input type="text" th:field="*{author}"></td>
+        </tr>
+        <tr>
+            <td>Your of book</td>
+            <td><input type="text" th:field="*{your}"></td>
+        </tr>
+        <tr>
+            <td>Style of book</td>
+            <td><input type="text" th:field="*{style}"></td>
+        </tr>
+        <tr>
+            <td>Amount pages</td>
+            <td><input type="text" th:field="*{amountPages}"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><input type="text" th:field="*{description}"></td>
+        </tr>
 
-    <tr th:each="buyer:${getBook.buyers}">
-        <td>Buyer's name</td>
-        <td><th:input type="text" th:text="${buyer.name}"/></td>
-    </tr>
-<!--    <tr>-->
-<!--        <td>Buyer's phone</td>-->
-<!--        <td><input type="text" th:field="*{buyer.phone}"></td>-->
-<!--    </tr>-->
+        <tr>
+            <td>Owner's id</td>
+            <td><input type="text" readonly th:field="*{owner.id}"></td>
+        </tr>
+        <tr>
+            <td>Owner's name</td>
+            <td><input type="text" th:field="*{owner.name}"></td>
 
-</table>
+            <!--    <tr>-->
+            <!--        <td>Owner's address</td>-->
+            <!--        <td><input type="text" th:field="*{owner.address}"></td>-->
+            <!--    </tr>-->
+        </tr>
+        <tr>
+            <td>Owner's name choice</td>
+            <td><select id="owner_id" name="owner_id">
+                <option th:each="owner:${owners}"
+                        th:value="${owner.id}"
+                        th:text="${owner.name}"> Option
+                </option>
+            </select>
+            </td>
+        </tr>
+
+        <tr th:each="buyer:${getBook.buyers}">
+            <td>Buyer's name</td>
+            <td>
+                <input type="text" th:text="${buyer.name}"/>
+            </td>
+        </tr>
+
+<!--        <tr>-->
+<!--            <td>Buyer's name choice</td>-->
+<!--            <td><select id="buyer_id" name="buyer_id">-->
+<!--                <option th:each="buyer:${buyers}"-->
+<!--                        th:value="${buyer.id}"-->
+<!--                        th:text="${buyer.name}"> Option-->
+<!--                </option>-->
+<!--            </select>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+
+        <!--    <tr>-->
+        <!--        <td>Buyer's phone</td>-->
+        <!--        <td><input type="text" th:field="*{buyer.phone}"></td>-->
+        <!--    </tr>-->
+
+    </table>
     <button>Update book</button>
 </form>
 </body>

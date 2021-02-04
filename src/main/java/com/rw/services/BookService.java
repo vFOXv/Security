@@ -23,10 +23,15 @@ public class BookService {
     }
 
     //получение книги по id
-    public Book getBookId(int id) {
-        return bookJPA.getOne(id);
-    }
 
+    //getOne(id) не работает
+//    public Book getBookId(int id) {
+//        return bookJPA.getOne(id);
+//    }
+    //поэтому делаем свой метод getBookById(id);
+    public Book getBookId(Integer id) {
+        return bookJPA.getBookById(id);
+    }
     //получение всех данных с таблицы
     public List<Book> getAllBooks(){
         return bookJPA.findAll();

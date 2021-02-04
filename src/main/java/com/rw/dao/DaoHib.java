@@ -81,7 +81,9 @@ public class DaoHib {
 
         try {
             transaction = session.beginTransaction();
-            session.update(newBook);
+            //С анотацией   @ManyToOne(cascade = {CascadeType.MERGE})
+            //метод update() не работает, работает метод merge()
+            session.merge(newBook);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

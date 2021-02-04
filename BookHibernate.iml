@@ -7,6 +7,10 @@
           <unit-entry name="noname-dispatcher-servlet.xml@1717" value="e2eb460c-fe15-4b4b-b084-db757eb2a1cd" />
           <unit-entry name="noname-dispatcher-servlet.xml@1721" />
           <unit-entry name="noname-dispatcher-servlet.xml@1769" />
+          <unit-entry name="noname-dispatcher-servlet.xml@1869" />
+          <unit-entry name="noname-dispatcher-servlet.xml@1876" />
+          <unit-entry name="noname-dispatcher-servlet.xml@1986" value="e2eb460c-fe15-4b4b-b084-db757eb2a1cd" />
+          <unit-entry name="noname-dispatcher-servlet.xml@1987" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />

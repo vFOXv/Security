@@ -25,11 +25,11 @@ public class Book {
 
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "id_owner")
     private Owner owner;
 
-    @ManyToMany(mappedBy = "books")
+    @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
     Set<Buyer> buyers = new HashSet<>();
 
     public Book() {    }

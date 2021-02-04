@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookJPA extends JpaRepository<Book,Integer> {
+    Book getBookById(Integer id);
 }

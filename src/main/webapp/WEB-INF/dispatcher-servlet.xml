@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:jpa="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
     <context:component-scan base-package="com.rw"/>
+
+    <!--Настройка Thymeleaf -->
 
     <bean id="templateResolver"
           class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
@@ -28,6 +31,7 @@
         <property name="viewNames" value="*" />
     </bean>
 
+    <!--Настройка базы данных для spring-->
 
     <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -36,21 +40,30 @@
         <property name="password" value="4444" />
     </bean>
 
+    <!--JPA-->
+
     <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="com.rw.models"/>
     </bean>
 
-<!--    <bean id = "vendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
-<!--        <property name="generateDdl" value="true"/>-->
-<!--    </bean>-->
+    <bean id = "vendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="generateDdl" value="true"/>
+    </bean>
+
 <!--    <jpa:repositories base-package="com.rw.repository"/>-->
-<!--    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
-<!--        <property name="dataSource" ref="dataSource"/>-->
-<!--        <property name="jpaVendorAdapter" ref="vendorAdapter"/>-->
-<!--        <property name="packagesToScan" value="com.rw.models"/>-->
-<!--    </bean>-->
-<!--    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
-<!--        <property name="entityManagerFactory" ref="entityManagerFactory"/>-->
-<!--    </bean>-->
+
+    <jpa:repositories base-package="com.rw.repository"/>
+    <!--Entity Manager-->
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="vendorAdapter"/>
+        <property name="packagesToScan" value="com.rw.models"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
 </beans>
