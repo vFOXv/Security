@@ -62,6 +62,10 @@ public class BookController {
         //model.addAttribute("getBook", daoHib.getBookId(id));
         model.addAttribute("getBook", bookService.getBookId(id));
         model.addAttribute("owners",ownerService.getAllOwners());
+        Set<Buyer> buyers = bookService.getBookId(id).getBuyers();
+        for (Buyer buyer : buyers) {
+            System.out.println(buyer);
+        }
         //model.addAttribute("buyers", buyerService.getAllBuyers());
         return "thisBook";
     }
