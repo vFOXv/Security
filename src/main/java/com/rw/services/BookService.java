@@ -52,4 +52,8 @@ public class BookService {
         Book book = bookJPA.getOne(id);
         bookJPA.delete(book);
     }
+
+//    public void deleteBuyerFromBook(Integer book_id, Integer buyer_id) {
+//        bookJpaDao.deleteBookBuyer(book_id, buyer_id);
+//    }
 }

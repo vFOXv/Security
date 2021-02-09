@@ -33,7 +33,7 @@ public class BookController {
         model.addAttribute("message", "All books");
         //model.addAttribute("AllBook", daoHib.getAllBooks());
         model.addAttribute("AllBook", bookService.getAllBooks());
-        model.addAttribute("delete", "remove");
+        //model.addAttribute("delete", "remove");
         return "listbook";
     }
 
@@ -74,4 +74,11 @@ public class BookController {
         bookService.updateBook(book);
         return "redirect:/";
     }
+
+//    @GetMapping("/remove")
+//    public  String removeBuyer(@RequestParam(value = "book_id") Integer id,
+//                               @RequestParam(value = "buyer_id")Integer b_id){
+//        bookService.deleteBuyerFromBook(id, b_id);
+//        return "thisBook";
+//    }
 }

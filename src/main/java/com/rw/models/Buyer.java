@@ -13,7 +13,7 @@ public class Buyer {
     private String name;
     private String phone;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "buyer_book",
                 joinColumns = @JoinColumn(name = "id_buyer"),
                 inverseJoinColumns = @JoinColumn(name = "id_book"))

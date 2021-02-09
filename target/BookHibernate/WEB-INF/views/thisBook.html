@@ -67,29 +67,11 @@
             </td>
         </tr>
 
-        <tr th:each="buyer:${getBook.buyers}">
+        <tr th:each="buyer: *{buyers}">
             <td>Buyer's name</td>
-            <td>
-                <input type="text" th:field="*{buyer.name}"/>
-            </td>
+            <td th:text="${buyer.name}"></td>
+            <td><a th:href="@{/remove(book_id = ${getBook.id}, buyer_id = ${buyer.id})}">Delete</a></td>
         </tr>
-
-<!--        <tr>-->
-<!--            <td>Buyer's name choice</td>-->
-<!--            <td><select id="buyer_id" name="buyer_id">-->
-<!--                <option th:each="buyer:${buyers}"-->
-<!--                        th:value="${buyer.id}"-->
-<!--                        th:text="${buyer.name}"> Option-->
-<!--                </option>-->
-<!--            </select>-->
-<!--            </td>-->
-<!--        </tr>-->
-
-
-        <!--    <tr>-->
-        <!--        <td>Buyer's phone</td>-->
-        <!--        <td><input type="text" th:field="*{buyer.phone}"></td>-->
-        <!--    </tr>-->
 
     </table>
     <button>Update book</button>
