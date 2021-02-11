@@ -2,8 +2,6 @@ package com.rw.services;
 
 import com.rw.models.Book;
 import com.rw.repository.BookJPA;
-import com.rw.repository.BuyerJPA;
-import com.rw.repository.OwnerJPA;
 import org.springframework.stereotype.Service;
 
 
@@ -23,12 +21,13 @@ public class BookService {
 //    public Book getBookId(int id) {
 //        return bookJPA.getOne(id);
 //    }
-    //поэтому делаем свой метод getBookById(id);
+    //поэтому делаем свой метод getBookId(id);
     public Book getBookId(Integer id) {
         return bookJPA.getBookById(id);
     }
     //получение всех данных с таблицы
     public List<Book> getAllBooks(){
+        System.out.println(bookJPA.findAll());
         return bookJPA.findAll();
     }
 
