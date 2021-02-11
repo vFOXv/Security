@@ -2,6 +2,7 @@ package com.rw.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -45,6 +46,22 @@ public class Owner {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Owner owner = (Owner) o;
+        return id == owner.id &&
+                Objects.equals(name, owner.name) &&
+                Objects.equals(address, owner.address) &&
+                Objects.equals(bookSet, owner.bookSet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, bookSet);
     }
 
     @Override

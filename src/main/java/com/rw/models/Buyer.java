@@ -2,6 +2,7 @@ package com.rw.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -57,6 +58,22 @@ public class Buyer {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Buyer buyer = (Buyer) o;
+        return id == buyer.id &&
+                Objects.equals(name, buyer.name) &&
+                Objects.equals(phone, buyer.phone) &&
+                Objects.equals(books, buyer.books);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, phone, books);
     }
 
     @Override

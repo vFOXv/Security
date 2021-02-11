@@ -2,6 +2,7 @@ package com.rw.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -115,6 +116,27 @@ public class Book {
 
     public void setBuyers(Set<Buyer> buyers) {
         this.buyers = buyers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id &&
+                amountPages == book.amountPages &&
+                Objects.equals(name, book.name) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(your, book.your) &&
+                Objects.equals(style, book.style) &&
+                Objects.equals(description, book.description) &&
+                Objects.equals(owner, book.owner) &&
+                Objects.equals(buyers, book.buyers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, author, your, style, amountPages, description, owner, buyers);
     }
 
     @Override

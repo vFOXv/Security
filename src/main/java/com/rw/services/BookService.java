@@ -1,6 +1,5 @@
 package com.rw.services;
 
-import com.rw.dao.BookJpaDao;
 import com.rw.models.Book;
 import com.rw.repository.BookJPA;
 import com.rw.repository.BuyerJPA;
@@ -13,17 +12,9 @@ import java.util.List;
 @Service
 public class BookService {
     private final BookJPA bookJPA;
-    private final BuyerJPA buyerJPA;
-    private final OwnerJPA ownerJPA;
-    private final BookJpaDao bookJpaDao;
 
-
-
-    public BookService(BookJPA bookJPA, BuyerJPA buyerJPA, OwnerJPA ownerJPA, BookJpaDao bookJpaDao) {
+    public BookService(BookJPA bookJPA) {
         this.bookJPA = bookJPA;
-        this.buyerJPA = buyerJPA;
-        this.ownerJPA = ownerJPA;
-        this.bookJpaDao = bookJpaDao;
     }
 
     //получение книги по id
@@ -56,8 +47,4 @@ public class BookService {
         Book book = bookJPA.getOne(id);
         bookJPA.delete(book);
     }
-
-//    public void deleteBuyerFromBook(Integer book_id, Integer buyer_id) {
-//        bookJpaDao.deleteBookBuyer(book_id, buyer_id);
-//    }
 }

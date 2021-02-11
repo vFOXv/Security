@@ -3,6 +3,7 @@ package com.rw.controllers;
 import com.rw.models.Book;
 
 import com.rw.models.Buyer;
+import com.rw.services.ActionService;
 import com.rw.services.BookService;
 import com.rw.services.BuyerService;
 import com.rw.services.OwnerService;
@@ -19,11 +20,13 @@ public class BookController {
     public final BookService bookService;
     public final OwnerService ownerService;
     public final BuyerService buyerService;
+    public final ActionService actionService;
 
-    public BookController(BookService bookService, OwnerService ownerService, BuyerService buyerService) {
+    public BookController(BookService bookService, OwnerService ownerService, BuyerService buyerService, ActionService actionService) {
         this.bookService = bookService;
         this.ownerService = ownerService;
         this.buyerService = buyerService;
+        this.actionService = actionService;
     }
 
 
@@ -79,10 +82,10 @@ public class BookController {
         return "redirect:/";
     }
 
-//    @GetMapping("/remove")
-//    public  String removeBuyer(@RequestParam(value = "book_id") Integer id,
-//                               @RequestParam(value = "buyer_id")Integer b_id){
-//        bookService.deleteBuyerFromBook(id, b_id);
-//        return "thisBook";
-//    }
+    @GetMapping("/remove")
+    public  String removeBuyer(@RequestParam(value = "book_id") Integer id,
+                               @RequestParam(value = "buyer_id")Integer b_id){
+        //actionService.deleteBookBuyer(id, b_id);
+        return "thisBook";
+    }
 }
