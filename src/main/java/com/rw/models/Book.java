@@ -129,14 +129,16 @@ public class Book {
                 Objects.equals(author, book.author) &&
                 Objects.equals(your, book.your) &&
                 Objects.equals(style, book.style) &&
-                Objects.equals(description, book.description) &&
-                Objects.equals(owner, book.owner) &&
-                Objects.equals(buyers, book.buyers);
+                Objects.equals(description, book.description)
+                //&&
+//                Objects.equals(owner, book.owner) &&
+//                Objects.equals(buyers, book.buyers);
+        ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, author, your, style, amountPages, description, owner, buyers);
+        return Objects.hash(id, name, author, your, style, amountPages, description);
     }
 
     @Override

@@ -31,27 +31,18 @@ public class BuyerService {
         return buyerJPA.getBuyerById(id);
     }
 
+    //удаление покупателей у книги
     public void deleteBookBuyer(Integer book_id, Integer buyer_id){
-//        Book book = bookService.getBookId(book_id);
-//        Buyer buyer = getBuyerId(buyer_id);
-//        Set<Book> books = buyer.getBooks();
-//        System.out.println("=======================================");
-//        System.out.println(books);
-//        //List<Buyer> buyers= (List<Buyer>) book.getBuyers();
-//        books.remove(book);
-//        System.out.println(books);
-//        //buyers.remove(buyer_id);
-//        //bookJPA.save(book);
-//        buyerJPA.save(buyer);
-
-        Book book = bookService.getBookId(book_id);
+        Book book = null;
         Buyer buyer = getBuyerId(buyer_id);
-        Set<Buyer>buyers= book.getBuyers();
-        System.out.println("=======================================");
-        System.out.println(buyers);
-        buyers.remove(buyer);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++");
-        System.out.println(buyers);
-        bookJPA.save(book);
+        Set<Book> books= buyer.getBooks();
+        for(Book object: books){
+            if(object.getId() == book_id){
+                book = object;
+                break;
+            }
+        }
+        books.remove(book);
+        buyerJPA.save(buyer);
     }
 }

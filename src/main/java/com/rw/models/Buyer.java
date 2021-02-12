@@ -60,21 +60,21 @@ public class Buyer {
         this.books = books;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Buyer buyer = (Buyer) o;
-//        return id == buyer.id &&
-//                Objects.equals(name, buyer.name) &&
-//                Objects.equals(phone, buyer.phone) &&
-//                Objects.equals(books, buyer.books);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, name, phone, books);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Buyer buyer = (Buyer) o;
+        return id == buyer.id &&
+                Objects.equals(name, buyer.name) &&
+                Objects.equals(phone, buyer.phone) &&
+                Objects.equals(books, buyer.books);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, phone, books);
+    }
 
     @Override
     public String toString() {

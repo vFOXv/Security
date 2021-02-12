@@ -84,6 +84,6 @@ public class BookController {
     public  String removeBuyer(@RequestParam(value = "book_id") Integer id,
                                @RequestParam(value = "buyer_id")Integer b_id){
         buyerService.deleteBookBuyer(id, b_id);
-        return (""+id);
+        return "redirect:/"+id;
     }
 }
