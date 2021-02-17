@@ -33,7 +33,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource){
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
-        sessionFactoryBean.setPackagesToScan("com.rw.model");
+        sessionFactoryBean.setPackagesToScan("com.rw.models");
         return sessionFactoryBean;
     }
 
@@ -48,7 +48,7 @@ public class PersistenceConfig {
                 new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
-        factoryBean.setPackagesToScan("com.rw.model");
+        factoryBean.setPackagesToScan("com.rw.models");
         return factoryBean;
 
     }
